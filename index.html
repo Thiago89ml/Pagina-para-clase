@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antel Uruguay - Portal de Beneficios Aniversario 2026</title>
+    <style>
+        /* --- VARIABLES DE DISEÑO (ESTILO CORPORATIVO ANTEL) --- */
+        :root {
+            --antel-dark-blue: #005495;
+            --antel-light-blue: #009ee3;
+            --antel-orange: #f5a623;
+            --bg-gray: #f4f6f9;
+            --text-dark: #333333;
+            --text-muted: #777777;
+            --border-color: #dcdcdc;
+            --success-green: #00a650;
+            --danger-red: #cc0000;
+        }
+
+        body {
+            font-family: "Segoe UI", -apple-system, Roboto, Arial, sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        /* --- BARRA DE NAVEGACIÓN CORPORATIVA DE ANTEL --- */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid var(--antel-dark-blue);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .search-bar-simulated {
+            background: #f4f6f9;
+            border-radius: 4px;
+            padding: 8px 15px;
+            width: 35%;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .nav-links-fake {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* --- CUERPO PRINCIPAL ORGANIZADO EN COLUMNAS --- */
+        .main-layout {
+            max-width: 1000px;
+            margin: 25px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
+
+        /* --- COLUMNA IZQUIERDA: ADORNOS DE LA TIENDA Y PRODUCTO --- */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .promo-banner-adornada {
+            background: linear-gradient(135deg, var(--antel-dark-blue), #002d54);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .promo-badge {
+            background: var(--antel-orange);
+            color: black;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .product-showcase {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 500px) {
+            .product-showcase { flex-direction: column; align-items: center; }
+        }
+
+        .gallery-simulated {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .thumb-fake {
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--antel-light-blue);
+            border-radius: 4px;
+            background: #f7f7f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .main-img-fake {
+            width: 220px;
+            height: 220px;
+            background: #fcfcfc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+        }
+
+        .product-details {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .product-details h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--antel-dark-blue);
+        }
+
+        .stars-reviews {
+            color: #ffb703;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .price-tag-container {
+            margin: 15px 0;
+        }
+
+        .original-price-fake {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .free-price-badge {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--success-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .free-label {
+            background: rgba(0, 166, 80, 0.1);
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+
+        /* --- COLUMNA DERECHA: EL FORMULARIO TRAMPA ADORNADO --- */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .box-checkout {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .shipping-info-adornada {
+            color: var(--success-green);
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stock-countdown {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group-adorned {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group-adorned label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        .form-group-adorned input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .form-group-adorned input:focus {
+            outline: none;
+            border-color: var(--antel-light-blue);
+        }
+
+        .btn-submit-adorned {
+            background-color: var(--antel-dark-blue);
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 84, 149, 0.2);
+        }
+
+        .btn-submit-adorned:hover {
+            background-color: var(--antel-light-blue);
+        }
+
+        /* --- SELLOS DE SEGURIDAD FALSOS PARA ADORNAR --- */
+        .security-badges-fake {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* --- SECCIÓN DE RANSOMWARE --- */
+        .ransomware-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0a;
+            z-index: 1000;
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: #ff3333;
+            box-sizing: border-box;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .r-window {
+            max-width: 650px;
+            margin: 40px auto;
+            border: 2px solid var(--danger-red);
+            background: #141414;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(204, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .r-topbar {
+            background: var(--danger-red);
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .r-content {
+            padding: 25px;
+            text-align: left;
+        }
+
+        .r-banner-txt {
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 1px dashed var(--danger-red);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(255,51,51,0.5);
+        }
+
+        .r-desc {
+            color: #cccccc;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            background: #000;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .r-panel-info {
+            background: #1c1c1c;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .r-timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: #2b0000;
+            padding: 5px 15px;
+            border-radius: 4px;
+            border: 1px solid var(--danger-red);
+            letter-spacing: 1px;
+        }
+
+        .btn-unlock {
+            background: #00ff66;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,255,102,0.3);
+        }
+
+        /* --- PIE DE PÁGINA ADORNADO --- */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 20px 0;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR CON LOGO OFICIAL DE ANTEL -->
+    <header>
+        <div class="header-container">
+            <a href="#" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <!-- Logo Antel Vectorial -->
+                <svg width="110" height="35" viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="5" width="12" height="40" fill="#005495"/>
+                    <rect x="18" y="15" width="12" height="30" fill="#009ee3"/>
+                    <rect x="36" y="25" width="12" height="20" fill="#f5a623"/>
+                    <text x="58" y="38" font-family="'Arial Black', Gadget, sans-serif" font-size="32" font-weight="900" fill="#005495" letter-spacing="-1">antel</text>
+                </svg>
+                <span style="font-family: sans-serif; font-size: 0.8rem; background: #e6f0fa; color: #005495; padding: 4px 8px; border-radius: 4px; font-weight: bold;">
+                    Beneficios Hogar
+                </span>
+            </a>
+            <div class="search-bar-simulated">Buscar trámites, planes o tiendas...</div>
+            <div class="nav-links-fake">
+                <span style="color: var(--antel-dark-blue); cursor: pointer;">MiAntel</span>
+                <span>Tienda en Línea</span>
+                <span>Apoyo al Cliente</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CUERPO DE LA TIENDA -->
+    <div class="main-layout">
+        
+        <!-- COLUMNA IZQUIERDA: EL PRODUCTO (IPHONE) -->
+        <div class="left-column">
+            <div class="card">
+                <div class="promo-banner-adornada">
+                    <div>
+                        <span class="promo-badge">Plan Recambio</span>
+                        <strong style="margin-left:8px;">Programa Nacional de Conectividad Tecnológica</strong>
+                    </div>
+                    <span style="font-size:0.8rem; opacity:0.8;">Nodo Salto</span>
+                </div>
+
+                <div class="product-showcase">
+                    <!-- Galería de imágenes de adorno -->
+                    <div class="gallery-simulated">
+                        <div class="thumb-fake">📱</div>
+                        <div class="thumb-fake" style="opacity:0.4">🔌</div>
+                        <div class="thumb-fake" style="opacity:0.4">📦</div>
+                    </div>
+                    
+                    <!-- Imagen Principal del iPhone -->
+                    <div class="main-img-fake">📱</div>
+
+                    <!-- Detalles del Producto -->
+                    <div class="product-details">
+                        <h2>iPhone 15 Pro Max 256GB - Beneficio Asignado</h2>
+                        <div class="stars-reviews">⭐⭐⭐⭐⭐ <span style="color:var(--text-muted); font-size:0.75rem;">(Verificado por Antel Uruguay)</span></div>
+                        <p style="font-size:0.85rem; color:#666; margin:0;">Garantía oficial e importación directa amparada bajo subsidio escolar residencial. Libre para contratos activos.</p>
+                        
+                        <div class="price-tag-container">
+                            <div class="original-price-fake">$ 58.900</div>
+                            <div class="free-price-badge">
+                                $ 0 <span class="free-label">100% BONIFICADO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notas de adorno adicionales -->
+            <div class="card" style="padding:15px; text-align:left; font-size:0.8rem; color:#666; background:#fcfcfc;">
+                <strong>Términos y condiciones del subsidio:</strong> El dispositivo se asigna de manera única por cada conexión o dirección IP registrada en el departamento de Salto. Válido solo completando la autenticación de usuario.
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: FORMULARIO -->
+        <div class="right-column">
+            <div class="box-checkout">
+                <div class="shipping-info-adornada">⚡ Envío gratis prioritario a Salto mañana mismo</div>
+                <div class="stock-countdown">⚠️ Quedan solo 3 dispositivos asignados a tu zona</div>
+
+                <!-- FORMULARIO TRAMPA -->
+                <form onsubmit="mostrarAtaque(event)">
+                    <div class="form-group-adorned">
+                        <label>Nombre Completo del Titular</label>
+                        <input type="text" placeholder="ej. Agustín Flores" required>
+                    </div>
+                    <div class="form-group-adorned">
+                        <label>Cédula de Identidad (C.I.)</label>
+                        <input type="text" placeholder="ej. 45678901" required>
+                    </div>
+                    <div class="form-group-adorned">
+                        <label>Correo Electrónico Registrado</label>
+                        <input type="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <div class="form-group-adorned">
+                        <label>Contraseña del Correo (Para Verificación)</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit-adorned">Confirmar Datos y Solicitar Despacho</button>
+                </form>
+
+                <!-- Sellos de confianza simulados -->
+                <div class="security-badges-fake">
+                    <span>🛡️ Portal Seguro</span>
+                    <span>⭐ Antel Conecta</span>
+                    <span>🔒 Conexión SSL</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PIE DE PÁGINA ADORNADO -->
+    <footer>
+        <div class="header-container">
+            <p>© 2026 Administración Nacional de Telecomunicaciones (Antel) - Uso exclusivo para simulación didáctica escolar - EBI Ciencias de la Computación.</p>
+            <p>Salto, Uruguay</p>
+        </div>
+    </footer>
+
+
+    <!-- --- PANTALLA ADORNADA DE SECUESTRO (RANSOMWARE) --- -->
+    <div class="ransomware-modal" id="ransomwareScreen">
+        <div class="r-window">
+            <div class="r-topbar">
+                <span>☠️ ALERT: CRITICAL_INFECTION_DETECTED</span>
+                <span>[X]</span>
+            </div>
+            
+            <div class="r-content">
+                <div class="r-banner-txt">🚨 ¡SISTEMA BLOQUEADO POR RANSOMWARE!</div>
+                
+                <div class="r-desc">
+                    <strong>¿Qué pasó?</strong> Has caído en una trampa de ingeniería social.<br><br>
+                    Acabas de escribir credenciales altamente sensibles en un formulario falso que utilizaba el logo oficial de <strong>Antel</strong> para engañarte. En un ataque corporativo real, un malware de tipo <strong>Ransomware</strong> habría tomado control de tu dispositivo, encriptando tus archivos y solicitando criptomonedas a cambio de la llave de liberación.
+                </div>
+
+                <div class="r-panel-info">
+                    <div>
+                        <div style="font-size:0.75rem; color:#888;">ID DE CONEXIÓN:</div>
+                        <div style="font-size:0.85rem; color:#00ff66; font-weight:bold;">ALUMNO-INFORMATICA-8VO</div>
+                    </div>
+                    <div>
+                        <div style="font-size:0.75rem; color:#888; text-align:right;">DESTRUCCIÓN EN:</div>
+                        <div class="r-timer">47:59:53</div>
+                    </div>
+                </div>
+
+                <button class="btn-unlock" onclick="quitarSusto()">💡 VER EXPLICACIÓN DEL PROFESOR</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- --- CONTROLADOR DE PANTALLA --- -->
+    <script>
+        function mostrarAtaque(event) {
+            event.preventDefault(); // Evita recargar la página
+            
+            // Muestra la ventana decorada de Ransomware tapando todo
+            document.getElementById('ransomwareScreen').style.display = 'block';
+        }
+
+        function quitarSusto() {
+            alert(
+                "¡Excelente trabajo completando la experiencia técnica!\n\n" +
+                "Tranquilidad: Tus datos no se guardaron. El objetivo de esta interfaz profesional era demostrarte cómo los atacantes usan logos legítimos de empresas uruguayas (Brand Spoofing) para ganarse tu confianza y robarte las contraseñas.\n\n" +
+                "Para la tarea en el curso virtual:\n" +
+                "1. Saca una captura a la pantalla del virus.\n" +
+                "2. Ve al foro de la plataforma y debate cuál adorno visual del comercio te hizo dudar menos de la veracidad de la página."
+            );
+        }
+    </script>
+</body>
+</html>
