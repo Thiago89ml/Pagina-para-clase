@@ -387,11 +387,9 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR CON LOGO OFICIAL DE ANTEL -->
     <header>
         <div class="header-container">
             <a href="#" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                <!-- Logo Antel Vectorial -->
                 <svg width="110" height="35" viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0" y="5" width="12" height="40" fill="#005495"/>
                     <rect x="18" y="15" width="12" height="30" fill="#009ee3"/>
@@ -411,10 +409,8 @@
         </div>
     </header>
 
-    <!-- CUERPO DE LA TIENDA -->
     <div class="main-layout">
         
-        <!-- COLUMNA IZQUIERDA: EL PRODUCTO (IPHONE) -->
         <div class="left-column">
             <div class="card">
                 <div class="promo-banner-adornada">
@@ -426,17 +422,14 @@
                 </div>
 
                 <div class="product-showcase">
-                    <!-- Galería de imágenes de adorno -->
                     <div class="gallery-simulated">
                         <div class="thumb-fake">📱</div>
                         <div class="thumb-fake" style="opacity:0.4">🔌</div>
                         <div class="thumb-fake" style="opacity:0.4">📦</div>
                     </div>
                     
-                    <!-- Imagen Principal del iPhone -->
                     <div class="main-img-fake">📱</div>
 
-                    <!-- Detalles del Producto -->
                     <div class="product-details">
                         <h2>iPhone 15 Pro Max 256GB - Beneficio Asignado</h2>
                         <div class="stars-reviews">⭐⭐⭐⭐⭐ <span style="color:var(--text-muted); font-size:0.75rem;">(Verificado por Antel Uruguay)</span></div>
@@ -452,19 +445,16 @@
                 </div>
             </div>
 
-            <!-- Notas de adorno adicionales -->
             <div class="card" style="padding:15px; text-align:left; font-size:0.8rem; color:#666; background:#fcfcfc;">
                 <strong>Términos y condiciones del subsidio:</strong> El dispositivo se asigna de manera única por cada conexión o dirección IP registrada en el departamento de Salto. Válido solo completando la autenticación de usuario.
             </div>
         </div>
 
-        <!-- COLUMNA DERECHA: FORMULARIO -->
         <div class="right-column">
             <div class="box-checkout">
                 <div class="shipping-info-adornada">⚡ Envío gratis prioritario a Salto mañana mismo</div>
                 <div class="stock-countdown">⚠️ Quedan solo 3 dispositivos asignados a tu zona</div>
 
-                <!-- FORMULARIO TRAMPA -->
                 <form onsubmit="mostrarAtaque(event)">
                     <div class="form-group-adorned">
                         <label>Nombre Completo del Titular</label>
@@ -486,7 +476,6 @@
                     <button type="submit" class="btn-submit-adorned">Confirmar Datos y Solicitar Despacho</button>
                 </form>
 
-                <!-- Sellos de confianza simulados -->
                 <div class="security-badges-fake">
                     <span>🛡️ Portal Seguro</span>
                     <span>⭐ Antel Conecta</span>
@@ -497,7 +486,6 @@
 
     </div>
 
-    <!-- PIE DE PÁGINA ADORNADO -->
     <footer>
         <div class="header-container">
             <p>© 2026 Administración Nacional de Telecomunicaciones (Antel) - Uso exclusivo para simulación didáctica escolar - EBI Ciencias de la Computación.</p>
@@ -506,7 +494,6 @@
     </footer>
 
 
-    <!-- --- PANTALLA ADORNADA DE SECUESTRO (RANSOMWARE) --- -->
     <div class="ransomware-modal" id="ransomwareScreen">
         <div class="r-window">
             <div class="r-topbar">
@@ -529,7 +516,6 @@
                     </div>
                     <div>
                         <div style="font-size:0.75rem; color:#888; text-align:right;">DESTRUCCIÓN EN:</div>
-                        <!-- ID asignado para el funcionamiento del script -->
                         <div class="r-timer" id="countdownClock">48:00:00</div>
                     </div>
                 </div>
@@ -538,19 +524,17 @@
     </div>
 
 
-    <!-- --- CONTROLADOR DE PANTALLA Y TEMPORIZADOR --- -->
     <script>
-        // Configuración inicial del tiempo total (48 horas = 172800 segundos)
-        let tiempoRestante = 48 * 60 * 60; 
+        let tiempoRestante = 48 * 60 * 60; // 48 horas en segundos
         let intervaloContador;
 
         function mostrarAtaque(event) {
-            event.preventDefault(); // Detiene el envío real del formulario
+            event.preventDefault(); // Evita que la página se recargue al enviar el formulario
             
-            // Hace visible la pantalla de bloqueo
+            // Hace visible la pantalla negra de bloqueo de Ransomware
             document.getElementById('ransomwareScreen').style.display = 'block';
             
-            // Inicia la cuenta regresiva real (actualiza cada 1 segundo)
+            // Llama a la función de descuento cada 1 segundo (1000 milisegundos)
             intervaloContador = setInterval(actualizarContador, 1000);
         }
 
@@ -563,17 +547,18 @@
 
             tiempoRestante--;
 
-            // Cálculo matemático de horas, minutos y segundos restantes
+            // Desglose del tiempo matemático
             let horas = Math.floor(tiempoRestante / 3600);
             let minutos = Math.floor((tiempoRestante % 3600) / 60);
             let segundos = tiempoRestante % 60;
 
-            // Formato con dos dígitos (antepone un '0' si el número es menor a 10)
+            // Agrega ceros a la izquierda de forma limpia si el valor es menor a 10
             let hDisplay = horas < 10 ? "0" + horas : horas;
-            let mDisplay = minutos < 10 ? "0" + minutos : minutos;
+            let mDisplay = minutos < 10 ? "0" + minutos : minutes; // Corrección menor de variable interna
+            mDisplay = minutos < 10 ? "0" + minutos : minutos;
             let sDisplay = segundos < 10 ? "0" + segundos : segundos;
 
-            // Renderizado en el elemento visual de la pantalla
+            // Actualiza el texto en la pantalla en tiempo real
             document.getElementById('countdownClock').innerText = hDisplay + ":" + mDisplay + ":" + sDisplay;
         }
     </script>
